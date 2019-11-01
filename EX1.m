@@ -4,9 +4,7 @@ function [frequencias] = EX1(info, txt, alfabeto)
         alfabeto = unique(info);
     end
     %calculo da matriz de ocurrências
-    aux = alfabeto(numel(alfabeto));
-    alfabeto(numel(alfabeto) + 1) = aux;
-    frequencias = histcounts(info(:), alfabeto);
+    frequencias = histcounts(info(:), vertcat(alfabeto, alfabeto(numel(alfabeto))+1));
 
     if (txt~=1)
         bar(frequencias)

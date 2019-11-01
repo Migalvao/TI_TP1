@@ -23,7 +23,7 @@ function [] = EX3(file)
         alfabeto = -1:d:1-d;
         
         %histograma
-        frequencias = EX1(sinal, 0, alfabeto);
+        frequencias = EX1(sinal, 0, alfabeto');
         %entropia e matriz de ocurrencias
         [entropia] = EX2(sinal, alfabeto, frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropia);
@@ -38,7 +38,7 @@ function [] = EX3(file)
         alfabeto = [double('A'):double('Z') double('a'):double('z')];
         
         %histograma
-        frequencias = EX1(double(txt), 1, alfabeto);
+        frequencias = EX1(double(txt), 1, alfabeto');
         %entropia e matriz de ocurrencias
         [entropia] = EX2(double(txt), alfabeto, frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropia);
