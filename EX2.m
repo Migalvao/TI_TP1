@@ -1,7 +1,4 @@
-function [e] = EX2(info, frequencias, alfabeto)
-    if (nargin < 3)
-        alfabeto = unique(info);
-    end
+function [e] = EX2(info, frequencias)
     %calculo da matriz de ocorrências
     %calculo da matriz de probabilidade de cada elemento de info
     
