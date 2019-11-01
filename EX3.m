@@ -7,9 +7,9 @@ function [] = EX3(file)
     if (fExt == '.bmp')
         img = imread(file);
         %produz histograma
-        EX1(img, 0);
+        frequencias = EX1(img, 0);
         %calculo da entropia e da matriz de ocurrencias
-        [entropia, frequencias] = EX2(img);
+        [entropia] = EX2(img, unique(img), frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropia);
         fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
         
@@ -23,9 +23,9 @@ function [] = EX3(file)
         alfabeto = -1:d:1-d;
         
         %histograma
-        EX1(sinal, 0, alfabeto);
+        frequencias = EX1(sinal, 0, alfabeto);
         %entropia e matriz de ocurrencias
-        [entropia, frequencias] = EX2(sinal, alfabeto);
+        [entropia] = EX2(sinal, alfabeto, frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropia);
         fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
         
@@ -38,9 +38,9 @@ function [] = EX3(file)
         alfabeto = [double('A'):double('Z') double('a'):double('z')];
         
         %histograma
-        EX1(double(txt), 1, alfabeto);
+        frequencias = EX1(double(txt), 1, alfabeto);
         %entropia e matriz de ocurrencias
-        [entropia, frequencias] = EX2(double(txt), alfabeto);
+        [entropia] = EX2(double(txt), alfabeto, frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropia);
         fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
     end

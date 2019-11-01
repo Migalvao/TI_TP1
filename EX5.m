@@ -21,9 +21,9 @@ function [comprimido] = EX5(file)
         comprimido = aux + aux2;
         
         %hitograma
-        EX1(comprimido, 0);
+        frequencias = EX1(comprimido, 0);
         
-        [entropy, frequencias] = EX2(comprimido);
+        [entropy] = EX2(comprimido, unique(comprimido), frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropy/2);
         fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
         
@@ -45,9 +45,9 @@ function [comprimido] = EX5(file)
         
         %aqui para o histograma damos a transposta porque o som e uma
         %matriz com uma so coluna
-        EX1(comprimido', 0);
+        frequencias = EX1(comprimido', 0);
      
-        [entropy, frequencias] = EX2(comprimido');
+        [entropy] = EX2(comprimido', unique(comprimido), frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropy/2);
         fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
         
@@ -68,8 +68,8 @@ function [comprimido] = EX5(file)
         %somar os dois arrays
         comprimido = aux + aux2;
         
-        EX1(comprimido, 0);
-        [entropy, frequencias]= EX2(comprimido);
+        frequencias = EX1(comprimido, 0);
+        [entropy]= EX2(comprimido, unique(comprimido), frequencias);
         fprintf("Média de bits por simbolo : %f\n", entropy/2);
         fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
     end
