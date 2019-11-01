@@ -3,7 +3,7 @@ function [frequencias] = EX1(info, txt, alfabeto)
     if (nargin < 3)
         alfabeto = unique(info);
     end
-    %calculo da matriz de ocurrências
+    %calculo da matriz de ocorrências
     frequencias = histcounts(info(:), vertcat(alfabeto, alfabeto(numel(alfabeto))+1));
 
     if (txt~=1)
