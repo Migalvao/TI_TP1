@@ -1,5 +1,4 @@
 function [e] = EX2(info, frequencias)
-    %calculo da matriz de ocorrências
     %calculo da matriz de probabilidade de cada elemento de info
     
     prob = frequencias / numel(info);
