@@ -1,5 +1,5 @@
-function [e] = EX2(info, alfabeto, frequencias)
-    if (nargin < 2)
+function [e] = EX2(info, frequencias, alfabeto)
+    if (nargin < 3)
         alfabeto = unique(info);
     end
     %calculo da matriz de ocurrencias
