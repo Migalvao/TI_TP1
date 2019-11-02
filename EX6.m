@@ -9,7 +9,7 @@ function [mutual_info] = EX6(query_file, target_file, alfabeto, step)
     %vai ser a query e Y a janela, que vai estar sempre a mudar 
     
     %entropia de X
-    entropia_query = EX2(query, alfabeto);
+    entropia_query = EX2b(query, alfabeto);
     
     %criar a matriz final inicialmente vazia
     mutual_info = [];
@@ -22,11 +22,11 @@ function [mutual_info] = EX6(query_file, target_file, alfabeto, step)
             janela = target((i-size(query,1)+1: i),(j-size(query, 2)+1: j));
             
             %calculo da entropia de X e entropia agrupada de X e Y
-            entropia_janela = EX2(janela, alfabeto);
+            entropia_janela = EX2b(janela, alfabeto);
             
             %aqui damos a informacao comprimida (devolvida pela funcao
             %inf_agrupada) e o alfabeto que é simplesmente o unique
-            entropia_agrupada = EX2(info_agrupada(query, janela), unique(info_agrupada(query, janela))');
+            entropia_agrupada = EX2b(info_agrupada(query, janela), unique(info_agrupada(query, janela))');
             
             %dar append ao novo valor de informacao mutua à nova linha 
             aux = [aux entropia_query + entropia_janela - entropia_agrupada];

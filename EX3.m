@@ -9,9 +9,12 @@ function [] = EX3(file)
         %produz histograma
         frequencias = EX1(img, 0);
         %calculo da entropia e da matriz de ocorrências
-        [entropia] = EX2(img, frequencias);
+        [entropia, prob] = EX2(img, frequencias);
+        [entropiaCHuff, variancia] = EX4(frequencias, prob);
         fprintf("Média de bits por simbolo : %f\n", entropia);
-        fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
+        fprintf("Codificação de Huffman, Média de bits por simbolo : %f\n", entropiaCHuff);
+        fprintf("Variancia: %f\n\n", variancia);
+        
         
     %se for som
     elseif (fExt == '.wav')
@@ -25,9 +28,11 @@ function [] = EX3(file)
         %histograma
         frequencias = EX1(sinal, 0, alfabeto');
         %entropia e matriz de ocorrências
-        [entropia] = EX2(sinal, frequencias);
+        [entropia, prob] = EX2(sinal, frequencias);
+        [entropiaCHuff, variancia] = EX4(frequencias, prob);
         fprintf("Média de bits por simbolo : %f\n", entropia);
-        fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
+        fprintf("Codificação de Huffman, Média de bits por simbolo : %f\n", entropiaCHuff);
+        fprintf("Variancia: %f\n\n", variancia);
         
     %se for texto
     elseif (fExt == '.txt')
@@ -40,9 +45,11 @@ function [] = EX3(file)
         %histograma
         frequencias = EX1(double(txt), 1, alfabeto');
         %entropia e matriz de ocorrências
-        [entropia] = EX2(double(txt), frequencias);
+        [entropia, prob] = EX2(double(txt), frequencias);
+        [entropiaCHuff, variancia] = EX4(frequencias, prob);
         fprintf("Média de bits por simbolo : %f\n", entropia);
-        fprintf("Variancia: %f\n\n", var(hufflen(frequencias)));
+        fprintf("Codificação de Huffman, Média de bits por simbolo : %f\n", entropiaCHuff);
+        fprintf("Variancia: %f\n\n", variancia);
     end
     
     title(fName);

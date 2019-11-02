@@ -3,10 +3,17 @@ function [frequencias] = EX1(info, isTxt, alfabeto)
     if (nargin < 3)
         alfabeto = unique(info);
     end
-    %calculo da matriz de ocorrências
-    frequencias = histcounts(info(:), vertcat(alfabeto, alfabeto(numel(alfabeto))+1));
-    bar(alfabeto, frequencias);
     
+    alfabeto2 = alfabeto;
+    aux = alfabeto(numel(alfabeto));
+    alfabeto(numel(alfabeto)+1) = aux + 1;
+    
+    %calculo da matriz de ocorrências
+    frequencias = histcounts(info(:), alfabeto);
+    bar(alfabeto2, frequencias);
+    
+    % se info for texto, as labels de Ox passam a ser as letras do alfabeto
+    % latim
     if (isTxt)
         letras = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N',...
             'O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d',...

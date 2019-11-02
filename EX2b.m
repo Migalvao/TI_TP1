@@ -1,6 +1,10 @@
-function [e, prob] = EX2(info, frequencias)
+function [e, frequencias] = EX2b(info, alfabeto)
+    if (nargin < 2)
+        alfabeto = unique(info);
+    end
+    %calculo da matriz de ocurrencias
+    frequencias = histcounts(info(:), [alfabeto, alfabeto(numel(alfabeto))+1]);
     %calculo da matriz de probabilidade de cada elemento de info
-    
     prob = frequencias / numel(info);
     e = entropia(prob);
 end
